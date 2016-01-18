@@ -32,7 +32,7 @@ namespace Leafly.Types
         public string website { get; set; }
         public string blurb { get; set; }
         public DateTime lastMenuUpdate { get; set; }
-        public int rating { get; set; }
+        public double rating { get; set; }
         public int meds { get; set; }
         public double service { get; set; }
         public double atmosphere { get; set; }
