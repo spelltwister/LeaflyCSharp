@@ -92,7 +92,7 @@ namespace Leafly.Web
 
         public Task<StrainAvailabilityResponseListItem[]> Availability(string slug, double latitude, double longitude, double? radius, string productTypeFilter)
         {
-            var reqString = $"{slug}/photos?lat={latitude}&lon={longitude}";
+            var reqString = $"{slug}/availability?lat={latitude}&lon={longitude}";
             if (radius.HasValue)
             {
                 reqString += $"&radius={radius.Value}";
