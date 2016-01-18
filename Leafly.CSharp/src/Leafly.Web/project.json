@@ -24,6 +24,6 @@
     }
   },
   "dependencies": {
-    "Leafly.Types": "0.7.0-beta"
+    "LeaflyApi.Types": "0.7.0-beta"
   }
 }
