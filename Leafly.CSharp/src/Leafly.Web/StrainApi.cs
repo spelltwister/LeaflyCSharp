@@ -67,7 +67,7 @@ namespace Leafly.Web
             {
                 postObject.filters = filterSet;
             }
-            return factory.PostStrainClientAndReadAsAsync<string, StrainSearchResponse>(String.Empty, postObject);
+            return factory.PostStrainClientAndReadAsAsync<StrainSearchResponse, dynamic>(String.Empty, postObject);
         }
 
         public Task<StrainDetailsResponse> Details(string slug)

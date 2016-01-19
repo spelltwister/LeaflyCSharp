@@ -90,7 +90,7 @@ namespace Leafly.Web
                 postObject.veterandiscount = filters.veterandiscount.Value;
             }
 
-            return factory.PostLocationClientAndReadAsAsync<string, LocationSearchResponse>(String.Empty, postObject);
+            return factory.PostLocationClientAndReadAsAsync<LocationSearchResponse, dynamic>(String.Empty, postObject);
         }
 
         public Task<LocationSpecialsListItem[]> Specials(string slug)
