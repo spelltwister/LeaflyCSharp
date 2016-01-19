@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.Threading.Tasks;
 using Leafly.Types;
 
@@ -17,11 +18,10 @@ namespace Leafly.Web
 
         public Task<StrainSearchResponse> Search(string searchTerm, string sort, OptionalStrainSearchFilters filters, int page = 0, int take = 10)
         {
-            dynamic postObject = new
-            {
-                page = page,
-                take = take
-            };
+            dynamic postObject = new ExpandoObject();
+            postObject.page = page;
+            postObject.take = take;
+
             if (!String.IsNullOrWhiteSpace(searchTerm))
             {
                 postObject.search = searchTerm;

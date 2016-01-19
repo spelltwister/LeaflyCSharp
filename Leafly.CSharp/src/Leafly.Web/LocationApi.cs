@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.Threading.Tasks;
 using Leafly.Types;
 
@@ -32,13 +33,11 @@ namespace Leafly.Web
 
         public Task<LocationSearchResponse> Search(Position position, OptionalLocationSearchFilters filters, int page = 0, int take = 10)
         {
-            dynamic postObject = new
-            {
-                page = page,
-                take = take,
-                latitude = position.latitude,
-                longitude = position.longitude
-            };
+            dynamic postObject = new ExpandoObject();
+            postObject.page = page;
+            postObject.take = take;
+            postObject.latitude = position.latitude;
+            postObject.longitude = position.longitude;
 
             if (filters.creditcards.HasValue)
             {
