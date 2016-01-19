@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.7.6-beta",
+  "version": "0.7.7-beta",
   "description": "Implementation of the Leafly proxy api using HttpClient.",
   "authors": [ "Mike Pavlak" ],
   "tags": [ "Leafly" ],
