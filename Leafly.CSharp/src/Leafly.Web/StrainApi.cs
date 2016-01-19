@@ -31,41 +31,44 @@ namespace Leafly.Web
                 postObject.sort = sort;
             }
 
-            bool anyFilters = false;
-            dynamic filterSet = new { };
-            if(filters.category != null && filters.category.Count > 0)
+            if (filters != null)
             {
-                anyFilters = true;
-                filterSet.category = filters.category;
-            }
-            if(filters.conditions != null && filters.conditions.Count > 0)
-            {
-                anyFilters = true;
-                filterSet.conditions = filters.conditions;
-            }
-            if(filters.exclude != null && filters.exclude.Count > 0)
-            {
-                anyFilters = true;
-                filterSet.exclude = filters.exclude;
-            }
-            if(filters.flavors != null && filters.flavors.Count > 0)
-            {
-                anyFilters = true;
-                filterSet.flavors = filters.flavors;
-            }
-            if(filters.symptoms != null && filters.symptoms.Count > 0)
-            {
-                anyFilters = true;
-                filterSet.symptoms = filters.symptoms;
-            }
-            if(filters.tags != null && filters.tags.Count > 0)
-            {
-                anyFilters = true;
-                filterSet.tags = filters.tags;
-            }
-            if (anyFilters)
-            {
-                postObject.filters = filterSet;
+                bool anyFilters = false;
+                dynamic filterSet = new {};
+                if (filters.category != null && filters.category.Count > 0)
+                {
+                    anyFilters = true;
+                    filterSet.category = filters.category;
+                }
+                if (filters.conditions != null && filters.conditions.Count > 0)
+                {
+                    anyFilters = true;
+                    filterSet.conditions = filters.conditions;
+                }
+                if (filters.exclude != null && filters.exclude.Count > 0)
+                {
+                    anyFilters = true;
+                    filterSet.exclude = filters.exclude;
+                }
+                if (filters.flavors != null && filters.flavors.Count > 0)
+                {
+                    anyFilters = true;
+                    filterSet.flavors = filters.flavors;
+                }
+                if (filters.symptoms != null && filters.symptoms.Count > 0)
+                {
+                    anyFilters = true;
+                    filterSet.symptoms = filters.symptoms;
+                }
+                if (filters.tags != null && filters.tags.Count > 0)
+                {
+                    anyFilters = true;
+                    filterSet.tags = filters.tags;
+                }
+                if (anyFilters)
+                {
+                    postObject.filters = filterSet;
+                }
             }
             return factory.PostStrainClientAndReadAsAsync<StrainSearchResponse, dynamic>(String.Empty, postObject);
         }
