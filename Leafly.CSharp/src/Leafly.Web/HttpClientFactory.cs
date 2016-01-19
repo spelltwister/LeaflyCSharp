@@ -10,8 +10,6 @@ namespace Leafly.Web
         private readonly string appKey;
         private readonly string appId;
 
-        //0d90ccdd
-        //9ae3b3efb051cc415840c92fd20ed7bd
         public HttpClientFactory(string appKey, string appId)
         {
             this.appKey = appKey;

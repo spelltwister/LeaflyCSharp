@@ -39,54 +39,57 @@ namespace Leafly.Web
             postObject.latitude = position.latitude;
             postObject.longitude = position.longitude;
 
-            if (filters.creditcards.HasValue)
+            if (filters != null)
             {
-                postObject.creditcards = filters.creditcards.Value;
-            }
+                if (filters.creditcards.HasValue)
+                {
+                    postObject.creditcards = filters.creditcards.Value;
+                }
 
-            if (filters.delivery.HasValue)
-            {
-                postObject.delivery = filters.delivery.Value;
-            }
+                if (filters.delivery.HasValue)
+                {
+                    postObject.delivery = filters.delivery.Value;
+                }
 
-            if (filters.hasclones.HasValue)
-            {
-                postObject.hasclones = filters.hasclones.Value;
-            }
+                if (filters.hasclones.HasValue)
+                {
+                    postObject.hasclones = filters.hasclones.Value;
+                }
 
-            if (filters.hasconcentrates.HasValue)
-            {
-                postObject.hasconcentrates = filters.hasconcentrates.Value;
-            }
+                if (filters.hasconcentrates.HasValue)
+                {
+                    postObject.hasconcentrates = filters.hasconcentrates.Value;
+                }
 
-            if (filters.hasedibles.HasValue)
-            {
-                postObject.hasedibles = filters.hasedibles.Value;
-            }
+                if (filters.hasedibles.HasValue)
+                {
+                    postObject.hasedibles = filters.hasedibles.Value;
+                }
 
-            if (filters.medical.HasValue)
-            {
-                postObject.medical = filters.medical.Value;
-            }
+                if (filters.medical.HasValue)
+                {
+                    postObject.medical = filters.medical.Value;
+                }
 
-            if (filters.retail.HasValue)
-            {
-                postObject.retail = filters.retail.Value;
-            }
+                if (filters.retail.HasValue)
+                {
+                    postObject.retail = filters.retail.Value;
+                }
 
-            if (filters.storefront.HasValue)
-            {
-                postObject.storefront = filters.storefront.Value;
-            }
+                if (filters.storefront.HasValue)
+                {
+                    postObject.storefront = filters.storefront.Value;
+                }
 
-            if (filters.strainIds != null && filters.strainIds.Count > 0)
-            {
-                postObject.strainIds = filters.strainIds;
-            }
+                if (filters.strainIds != null && filters.strainIds.Count > 0)
+                {
+                    postObject.strainIds = filters.strainIds;
+                }
 
-            if (filters.veterandiscount.HasValue)
-            {
-                postObject.veterandiscount = filters.veterandiscount.Value;
+                if (filters.veterandiscount.HasValue)
+                {
+                    postObject.veterandiscount = filters.veterandiscount.Value;
+                }
             }
 
             return factory.PostLocationClientAndReadAsAsync<LocationSearchResponse, dynamic>(String.Empty, postObject);
