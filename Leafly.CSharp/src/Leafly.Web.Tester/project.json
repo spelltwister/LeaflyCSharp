@@ -11,8 +11,8 @@
   },
 
   "dependencies": {
-    "Leafly.Types": "0.7.6-beta",
-    "Leafly.Web": "0.7.10-beta"
+    "Leafly.Types": "0.8.0",
+    "Leafly.Web": "0.8.0"
   },
 
   "commands": {
