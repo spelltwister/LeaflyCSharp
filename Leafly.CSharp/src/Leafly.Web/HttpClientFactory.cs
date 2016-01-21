@@ -10,10 +10,16 @@ namespace Leafly.Web
         private readonly string appKey;
         private readonly string appId;
 
-        public HttpClientFactory(string appKey, string appId)
+        private readonly string strainEndpoint;
+        private readonly string locationEndpoint;
+
+        public HttpClientFactory(string appKey, string appId, string strainEndpoint = "http://data.leafly.com/strains", string locationEndpoint = "http://data.leafly.com/locations")
         {
             this.appKey = appKey;
             this.appId = appId;
+
+            this.strainEndpoint = strainEndpoint;
+            this.locationEndpoint = locationEndpoint;
         }
 
         private HttpClient GetBaseClient(string url)
@@ -31,12 +37,12 @@ namespace Leafly.Web
 
         public HttpClient GetLocationClient()
         {
-            return GetBaseClient("http://data.leafly.com/locations/");
+            return GetBaseClient($"{locationEndpoint}/");
         }
 
         public HttpClient GetStrainClient()
         {
-            return GetBaseClient("http://data.leafly.com/strains/");
+            return GetBaseClient($"{strainEndpoint}/");
         }
 
         internal static async Task<T> GetAndReadAsAsync<T>(HttpClient client, string endpoint)
@@ -71,7 +77,7 @@ namespace Leafly.Web
 
         public Task<T> PostStrainClientAndReadAsAsync<T, U>(string endpoint, U content)
         {
-            return PostAndReadAsAsync<T, U>(GetStrainClient(), endpoint, content);
+            return PostAndReadAsAsync<T, U>(GetBaseClient(strainEndpoint), endpoint, content); // NOTE: doesn't work with the trailing '/'
         }
 
         public Task<T> PostLocationClientAndReadAsAsync<T, U>(string endpoint, U content)
